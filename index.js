@@ -1,8 +1,8 @@
 import {
   listContacts,
   getContactById,
-  addContact,
   removeContact,
+  addContact,
 } from './contacts.js';
 import { program } from 'commander';
 program
@@ -20,23 +20,22 @@ async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case 'list':
       const contactsList = await listContacts();
-      console.log(contactsList);
+      console.table(contactsList);
       break;
 
     case 'get':
       const getContact = await getContactById(id);
-      console.log(getContact);
+      console.table(getContact);
       break;
 
     case 'add':
       const addedContact = await addContact(name, email, phone);
-      console.log(addedContact);
+      console.table(addedContact);
       break;
 
     case 'remove':
       const deleteContact = await removeContact(id);
-      console.log(deleteContact);
-
+      console.table(deleteContact);
       break;
 
     default:
